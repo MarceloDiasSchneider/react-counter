@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react"
+import Display from "./components/Display"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [count, setCount] = useState(0)  
+    function up() {
+      setCount(prevCount => prevCount + 1 )
+    }
+    function donw() {
+      setCount(prevCount => prevCount - 1 )
+    }
+
+    return (
+        <div className="counter">
+            <button className="counter--minus" onClick={donw} >–</button>
+            <Display count={count} />
+            <button className="counter--plus"  onClick={up} >+</button>
+        </div>
+    )
 }
-
-export default App;
